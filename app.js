@@ -1,9 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 const { MongoClient } = require('mongodb');
 
 const MONGODB_URI = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : 'mongodb://localhost:27017/himym';
 
 const app = express();
+
+app.use(cors());
 
 MongoClient.connect(MONGODB_URI, function(err, db) {
 
